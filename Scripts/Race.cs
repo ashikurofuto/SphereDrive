@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Race : MonoBehaviour
 {
     [SerializeField] private SphereInput _sphereInput;
-    [SerializeField] private Image _menuPanel;
+    [SerializeField] private MenuPanel _menuPanel;
     [SerializeField] private ResultScreen _resutPanel;
 
     private Road _gameTrack;
