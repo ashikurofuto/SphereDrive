@@ -48,5 +48,12 @@ public class Timer
     {
         _isTickedTime = true;
     }
+    public void SetTime(int hours, int minutes,int seconds)
+    {
+        this._hours = hours;
+        this._minutes = minutes;
+        this._seconds = seconds;
+    }
+
 }
 

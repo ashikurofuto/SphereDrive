@@ -26,7 +26,7 @@ public class Race : MonoBehaviour
     {
         _sphereInput.CanUseInput = false;
         _timeControl.StopTime();
-        _saveScore.LoadRecord();
+        LoadScore();
     }
     private void OnEnable()
     {
@@ -91,4 +91,10 @@ public class Race : MonoBehaviour
         string badResult = "You Lose!!!!";
         return badResult;
     }
+
+    private void LoadScore()
+    {
+        _timer.SetTime(_saveScore.LoadHours(), _saveScore.LoadMinutes(), _saveScore.LoadSeconds());
+    }
+
 }
