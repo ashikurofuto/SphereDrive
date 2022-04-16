@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MenuPanel : MonoBehaviour
 {
     [SerializeField] private GameObject[] _sceneObjects;
+    public Action OnMenuOpened;
 
     private void OnEnable()
     {
         SetObjectsActive(false);
+        OnMenuOpened?.Invoke();
     }
     private void OnDisable()
     {

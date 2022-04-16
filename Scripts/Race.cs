@@ -20,26 +20,27 @@ public class Race : MonoBehaviour
         _timeControl = new TimeControl();
         _timer = new Timer();
         _saveScore = new SaveScore();
-
+        LoadResult();
     }
     private void Start()
     {
         _sphereInput.CanUseInput = false;
         _timeControl.StopTime();
-        LoadScore();
+        
     }
     private void OnEnable()
     {
         _gameTrack.OnGameLosing += Lose;
         _finish.OnGameWin += Win;
         _sphereInput.OnMenuCalled += StopGame;
-        
+        _menuPanel.OnMenuOpened += GetLastResult;
     }
     private void OnDisable()
     {
         _gameTrack.OnGameLosing -= Lose;
         _finish.OnGameWin -= Win;
         _sphereInput.OnMenuCalled -= StopGame;
+        _menuPanel.OnMenuOpened -= GetLastResult;
     }
     private void Update()
     {
@@ -92,9 +93,13 @@ public class Race : MonoBehaviour
         return badResult;
     }
 
-    private void LoadScore()
+    private void LoadResult()
     {
         _timer.SetTime(_saveScore.LoadHours(), _saveScore.LoadMinutes(), _saveScore.LoadSeconds());
+    }
+    private void GetLastResult()
+    {
+        _resutPanel.SetResultText($"Your last result! {_timer.Hours}:{_timer.Minutes}:{_timer.Seconds}");
     }
 
 }
