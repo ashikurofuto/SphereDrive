@@ -8,11 +8,20 @@ public class SaveScore
         PlayerPrefs.SetInt("Minutes", minutes);
         PlayerPrefs.SetInt("Seconds", seconds);
     }
-    public void LoadRecord()
+
+    public int LoadHours()
     {
-        PlayerPrefs.GetInt("Hours");
-        PlayerPrefs.GetInt("Minutes");
-        PlayerPrefs.GetInt("Seconds");
+        return PlayerPrefs.GetInt("Hours");
     }
+    public int LoadMinutes()
+    {
+        return PlayerPrefs.GetInt("Minutes");
+    }
+    public int LoadSeconds()
+    {
+        return PlayerPrefs.GetInt("Seconds");
+    }
+
+
 }
 
