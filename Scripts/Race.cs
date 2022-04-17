@@ -24,7 +24,6 @@ public class Race : MonoBehaviour
     }
     private void Start()
     {
-        _sphereInput.CanUseInput = false;
         _timeControl.StopTime();
         
     }

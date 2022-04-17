@@ -4,33 +4,34 @@ public class Sphere : MonoBehaviour
 {
     [SerializeField] private SphereData _sphereData;
     [SerializeField] private SphereInput _sphereInput;
+    [SerializeField] private MenuPanel _menu;
 
     private Vector3 _sphereDirection;
     private Vector3 _startPos;
-    private AddForceMoving forceMoving;
+    private AddForceMoving _forceMoving;
     private IMoving _moveble;
     private Rigidbody _rigid;
 
     private void Awake()
     {
         _rigid = this.GetComponent<Rigidbody>();
-        forceMoving = new AddForceMoving(_rigid);
+        _forceMoving = new AddForceMoving(_rigid);
     }
 
     private void Start()
     {
-        _moveble = forceMoving;
-        _startPos = transform.position;
+        _moveble = _forceMoving;
+        _startPos = new Vector3(13.02f, 0.31f, -1.4f);
     }
 
     private void OnEnable()
     {
-        _sphereInput.OnMenuCalled += ReturnStartPos;
+        _menu.OnMenuOpened += ReturnStartPos;
     }
 
     private void OnDisable()
     {
-        _sphereInput.OnMenuCalled -= ReturnStartPos;
+        _menu.OnMenuOpened -= ReturnStartPos;
     }
 
     private void Update()
@@ -46,5 +47,6 @@ public class Sphere : MonoBehaviour
     private void ReturnStartPos()
     {
         transform.position = _startPos;
+        _forceMoving.StopForce();
     }
 }

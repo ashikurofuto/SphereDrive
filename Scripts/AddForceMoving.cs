@@ -13,4 +13,10 @@ public class AddForceMoving : IMoving
     {
         _rigid.AddForce(velocity);
     }
+
+    public void StopForce()
+    {
+        _rigid.Sleep();
+    }
+
 }
