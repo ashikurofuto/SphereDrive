@@ -22,6 +22,7 @@ public class Sphere : MonoBehaviour
     {
         _moveble = _forceMoving;
         _startPos = new Vector3(13.02f, 0.31f, -1.4f);
+        ReturnStartPos();
     }
 
     private void OnEnable()
